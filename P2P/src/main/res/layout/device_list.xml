@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:gravity="center_vertical"
-        android:background="#D500F9" />
+        android:background="#1DE9B6" />
 
     <!-- Self information -->
     <LinearLayout
@@ -61,7 +61,7 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:gravity="center_vertical"
-        android:background="#D500F9" />
+        android:background="#1DE9B6" />
 
     <!-- Available peers -->
     <ListView

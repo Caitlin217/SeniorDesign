@@ -21,8 +21,7 @@ import android.widget.Toast;
 
 
 
-class RequestSendFileAsyncTask extends
-        AsyncTask<Void, Void, Boolean> {
+class RequestSendFileAsyncTask extends AsyncTask<Void, Void, Boolean> {
     private String fileName;
     private int fileSize;
     private String host;

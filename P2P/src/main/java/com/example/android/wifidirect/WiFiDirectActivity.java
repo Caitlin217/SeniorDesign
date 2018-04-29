@@ -32,11 +32,10 @@ import com.example.android.wifidirect.AppNetService.NetServiceBinder;
 
 
 public class WiFiDirectActivity extends Activity implements DeviceActionListener {
-    public static final String TAG = "wifidirectdemo";
+    public static final String TAG = "wifi direct";
 
     private static boolean isSendingFile = false;
     AppNetService appNetService;
-
     public AppNetService getNetService() {
         return appNetService;
     }
@@ -59,6 +58,42 @@ public class WiFiDirectActivity extends Activity implements DeviceActionListener
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        android.net.wifi.WifiManager wifi_manager = (android.net.wifi.WifiManager)getApplicationContext().getSystemService(WIFI_SERVICE);
+        String networkSSID = "Kyle";
+        String networkPass = "Kpizzo94";
+        android.net.wifi.WifiConfiguration conf = new android.net.wifi.WifiConfiguration();
+
+        if (!wifi_manager.isWifiEnabled()){
+
+            conf.status = android.net.wifi.WifiConfiguration.Status.ENABLED;
+            conf.allowedKeyManagement.set(android.net.wifi.WifiConfiguration.KeyMgmt.WPA_PSK);
+            conf.allowedProtocols.set(android.net.wifi.WifiConfiguration.Protocol.WPA);
+            conf.allowedGroupCiphers.set(android.net.wifi.WifiConfiguration.GroupCipher.TKIP);
+            conf.allowedGroupCiphers.set(android.net.wifi.WifiConfiguration.GroupCipher.CCMP);
+            conf.allowedPairwiseCiphers.set(android.net.wifi.WifiConfiguration.PairwiseCipher.TKIP);
+            conf.allowedPairwiseCiphers.set(android.net.wifi.WifiConfiguration.PairwiseCipher.CCMP);
+            conf.allowedProtocols.set(android.net.wifi.WifiConfiguration.Protocol.RSN);
+            conf.SSID = "\"" + networkSSID + "\"";
+            conf.preSharedKey = "\""+ networkPass +"\"";
+            wifi_manager.setWifiEnabled(true);
+
+            //wifi_manager.startScan();
+            wifi_manager.addNetwork(conf);
+            wifi_manager.saveConfiguration();
+            List<android.net.wifi.WifiConfiguration> list = wifi_manager.getConfiguredNetworks();
+            for( android.net.wifi.WifiConfiguration i : list ) {
+
+            wifi_manager.disconnect();
+
+            wifi_manager.enableNetwork(i.networkId, true);
+
+            wifi_manager.reconnect();
+
+            break;
+
+            }
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 

@@ -71,7 +71,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:textColor="#D500F9"
+            android:textColor="#1DE9B6"
             android:id="@+id/status_text">
         </TextView>
     </LinearLayout>

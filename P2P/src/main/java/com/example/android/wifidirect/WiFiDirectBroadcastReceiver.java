@@ -69,7 +69,7 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
 
                 netService.discoverPeers();
             }
-            Log.d(TAG, "P2P connection changed - networkInfo:" + networkInfo.toString());
+
         } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
             WifiP2pDevice wifiP2pDevice = (WifiP2pDevice) intent.getParcelableExtra(
                     WifiP2pManager.EXTRA_WIFI_P2P_DEVICE);
